@@ -1,0 +1,112 @@
+2018-07-12 16:39:49,714 ERROR: Exception on /user/Billy [GET] [in /data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.6/site-packages/flask/app.py:1761]
+Traceback (most recent call last):
+  File "/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.6/site-packages/sqlalchemy/orm/interfaces.py", line 509, in _get_strategy
+    return self._strategies[key]
+KeyError: (('lazy', 'dinamic'),)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.6/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.6/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.6/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.6/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.6/site-packages/flask/app.py", line 1811, in full_dispatch_request
+    rv = self.preprocess_request()
+  File "/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.6/site-packages/flask/app.py", line 2087, in preprocess_request
+    rv = func()
+  File "/storage/emulated/0/Download/blog/app/routers.py", line 25, in before_request
+    if current_user.is_authenticated:
+  File "/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.6/site-packages/werkzeug/local.py", line 347, in __getattr__
+    return getattr(self._get_current_object(), name)
+  File "/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.6/site-packages/werkzeug/local.py", line 306, in _get_current_object
+    return self.__local()
+  File "/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.6/site-packages/flask_login/utils.py", line 26, in <lambda>
+    current_user = LocalProxy(lambda: _get_user())
+  File "/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.6/site-packages/flask_login/utils.py", line 335, in _get_user
+    current_app.login_manager._load_user()
+  File "/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.6/site-packages/flask_login/login_manager.py", line 359, in _load_user
+    return self.reload_user()
+  File "/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.6/site-packages/flask_login/login_manager.py", line 321, in reload_user
+    user = self.user_callback(user_id)
+  File "/storage/emulated/0/Download/blog/app/models.py", line 11, in load_user
+    return User.query.get(int(id))
+  File "/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.6/site-packages/flask_sqlalchemy/__init__.py", line 512, in __get__
+    mapper = orm.class_mapper(type)
+  File "/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.6/site-packages/sqlalchemy/orm/base.py", line 421, in class_mapper
+    mapper = _inspect_mapped_class(class_, configure=configure)
+  File "/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.6/site-packages/sqlalchemy/orm/base.py", line 400, in _inspect_mapped_class
+    mapper._configure_all()
+  File "/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.6/site-packages/sqlalchemy/orm/mapper.py", line 1272, in _configure_all
+    configure_mappers()
+  File "/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.6/site-packages/sqlalchemy/orm/mapper.py", line 3029, in configure_mappers
+    mapper._post_configure_properties()
+  File "/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.6/site-packages/sqlalchemy/orm/mapper.py", line 1828, in _post_configure_properties
+    prop.init()
+  File "/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.6/site-packages/sqlalchemy/orm/interfaces.py", line 184, in init
+    self.do_init()
+  File "/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.6/site-packages/sqlalchemy/orm/relationships.py", line 1661, in do_init
+    super(RelationshipProperty, self).do_init()
+  File "/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.6/site-packages/sqlalchemy/orm/interfaces.py", line 539, in do_init
+    self.strategy = self._get_strategy(self.strategy_key)
+  File "/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.6/site-packages/sqlalchemy/orm/interfaces.py", line 511, in _get_strategy
+    cls = self._strategy_lookup(*key)
+  File "/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.6/site-packages/sqlalchemy/orm/interfaces.py", line 570, in _strategy_lookup
+    raise Exception("can't locate strategy for %s %s" % (cls, key))
+Exception: can't locate strategy for <class 'sqlalchemy.orm.relationships.RelationshipProperty'> (('lazy', 'dinamic'),)
+2018-07-12 16:40:51,462 INFO: Microblog startup [in /storage/emulated/0/Download/blog/app/__init__.py:33]
+2018-07-12 16:41:24,485 INFO: Microblog startup [in /storage/emulated/0/Download/blog/app/__init__.py:33]
+2018-07-12 16:42:53,395 INFO: Microblog startup [in /storage/emulated/0/Download/blog/app/__init__.py:33]
+2018-07-12 16:43:01,223 INFO: Microblog startup [in /storage/emulated/0/Download/blog/app/__init__.py:33]
+2018-07-12 16:43:37,539 ERROR: Exception on /follow/nelly [GET] [in /data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.6/site-packages/flask/app.py:1761]
+Traceback (most recent call last):
+  File "/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.6/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.6/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.6/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.6/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.6/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.6/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
+    return func(*args, **kwargs)
+  File "/storage/emulated/0/Download/blog/app/routers.py", line 64, in follow
+    current_user.follow(user)
+  File "/storage/emulated/0/Download/blog/app/models.py", line 47, in follow
+    if not self.is_following(user):
+  File "/storage/emulated/0/Download/blog/app/models.py", line 63, in is_following
+    followers.c.followed_id==user.id).count() > 0
+AttributeError: 'BaseQuery' object has no attribute 'id'
+2018-07-12 16:44:44,405 INFO: Microblog startup [in /storage/emulated/0/Download/blog/app/__init__.py:33]
+2018-07-12 16:44:51,169 ERROR: Exception on /follow/nelly [GET] [in /data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.6/site-packages/flask/app.py:1761]
+Traceback (most recent call last):
+  File "/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.6/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.6/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.6/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.6/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.6/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.6/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
+    return func(*args, **kwargs)
+  File "/storage/emulated/0/Download/blog/app/routers.py", line 64, in follow
+    current_user.follow(user)
+  File "/storage/emulated/0/Download/blog/app/models.py", line 47, in follow
+    if not self.is_following(user):
+  File "/storage/emulated/0/Download/blog/app/models.py", line 63, in is_following
+    followers.c.followed_id==user.id).count() > 0
+AttributeError: 'BaseQuery' object has no attribute 'id'
+2018-07-12 16:49:26,553 INFO: Microblog startup [in /storage/emulated/0/Download/blog/app/__init__.py:33]

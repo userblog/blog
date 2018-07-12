@@ -1,4 +1,4 @@
-2018-07-12 17:31:23,465 ERROR: Exception on /follow/billy [GET] [in /data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.6/site-packages/flask/app.py:1761]
+2018-07-12 17:19:01,198 ERROR: Exception on /follow/nelly [GET] [in /data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.6/site-packages/flask/app.py:1761]
 Traceback (most recent call last):
   File "/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.6/site-packages/flask/app.py", line 2292, in wsgi_app
     response = self.full_dispatch_request()
@@ -18,11 +18,11 @@ Traceback (most recent call last):
     current_user.follow(user)
   File "/storage/emulated/0/Download/blog/app/models.py", line 47, in follow
     if not self.is_following(user):
-  File "/storage/emulated/0/Download/blog/app/models.py", line 56, in is_following
-    followers.c.followed_id==user.id).count() > 0
+  File "/storage/emulated/0/Download/blog/app/models.py", line 55, in is_following
+    if not user.id:
 AttributeError: 'BaseQuery' object has no attribute 'id'
-2018-07-12 17:36:14,739 INFO: Microblog startup [in /storage/emulated/0/Download/blog/app/__init__.py:33]
-2018-07-12 17:36:21,893 ERROR: Exception on /follow/billy [GET] [in /data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.6/site-packages/flask/app.py:1761]
+2018-07-12 17:19:48,170 INFO: Microblog startup [in /storage/emulated/0/Download/blog/app/__init__.py:33]
+2018-07-12 17:19:51,677 ERROR: Exception on /follow/nelly [GET] [in /data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.6/site-packages/flask/app.py:1761]
 Traceback (most recent call last):
   File "/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.6/site-packages/flask/app.py", line 2292, in wsgi_app
     response = self.full_dispatch_request()
@@ -38,21 +38,15 @@ Traceback (most recent call last):
     return self.view_functions[rule.endpoint](**req.view_args)
   File "/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
     return func(*args, **kwargs)
-  File "/storage/emulated/0/Download/blog/app/routers.py", line 67, in follow
-    return redirect(url_for('user', usernamr=username))
-  File "/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.6/site-packages/flask/helpers.py", line 356, in url_for
-    return appctx.app.handle_url_build_error(error, endpoint, values)
-  File "/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.6/site-packages/flask/app.py", line 2061, in handle_url_build_error
-    reraise(exc_type, exc_value, tb)
-  File "/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.6/site-packages/flask/_compat.py", line 35, in reraise
-    raise value
-  File "/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.6/site-packages/flask/helpers.py", line 345, in url_for
-    force_external=external)
-  File "/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.6/site-packages/werkzeug/routing.py", line 1776, in build
-    raise BuildError(endpoint, values, method, self)
-werkzeug.routing.BuildError: Could not build url for endpoint 'user' with values ['usernamr']. Did you forget to specify values ['username']?
-2018-07-12 17:37:28,505 INFO: Microblog startup [in /storage/emulated/0/Download/blog/app/__init__.py:33]
-2018-07-12 17:38:15,660 ERROR: Exception on /unfollow/billy [GET] [in /data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.6/site-packages/flask/app.py:1761]
+  File "/storage/emulated/0/Download/blog/app/routers.py", line 64, in follow
+    current_user.follow(user)
+  File "/storage/emulated/0/Download/blog/app/models.py", line 47, in follow
+    if not self.is_following(user):
+  File "/storage/emulated/0/Download/blog/app/models.py", line 55, in is_following
+    if not self.user.id:
+AttributeError: 'User' object has no attribute 'user'
+2018-07-12 17:20:43,804 INFO: Microblog startup [in /storage/emulated/0/Download/blog/app/__init__.py:33]
+2018-07-12 17:20:47,824 ERROR: Exception on /follow/nelly [GET] [in /data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.6/site-packages/flask/app.py:1761]
 Traceback (most recent call last):
   File "/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.6/site-packages/flask/app.py", line 2292, in wsgi_app
     response = self.full_dispatch_request()
@@ -68,18 +62,41 @@ Traceback (most recent call last):
     return self.view_functions[rule.endpoint](**req.view_args)
   File "/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
     return func(*args, **kwargs)
-  File "/storage/emulated/0/Download/blog/app/routers.py", line 82, in unfollow
-    return redirect(url_for('user', usernamr=username))
-  File "/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.6/site-packages/flask/helpers.py", line 356, in url_for
-    return appctx.app.handle_url_build_error(error, endpoint, values)
-  File "/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.6/site-packages/flask/app.py", line 2061, in handle_url_build_error
+  File "/storage/emulated/0/Download/blog/app/routers.py", line 64, in follow
+    current_user.follow(user)
+  File "/storage/emulated/0/Download/blog/app/models.py", line 48, in follow
+    self.followed.append(user)
+  File "/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.6/site-packages/sqlalchemy/orm/dynamic.py", line 300, in append
+    attributes.instance_dict(self.instance), item, None)
+  File "/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.6/site-packages/sqlalchemy/orm/dynamic.py", line 200, in append
+    self.fire_append_event(state, dict_, value, initiator)
+  File "/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.6/site-packages/sqlalchemy/orm/dynamic.py", line 98, in fire_append_event
+    value = fn(state, value, initiator or self._append_token)
+  File "/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.6/site-packages/sqlalchemy/orm/unitofwork.py", line 43, in append
+    item_state = attributes.instance_state(item)
+AttributeError: 'BaseQuery' object has no attribute '_sa_instance_state'
+2018-07-12 17:24:29,426 INFO: Microblog startup [in /storage/emulated/0/Download/blog/app/__init__.py:33]
+2018-07-12 17:24:38,487 ERROR: Exception on /follow/nelly [GET] [in /data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.6/site-packages/flask/app.py:1761]
+Traceback (most recent call last):
+  File "/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.6/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.6/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.6/site-packages/flask/app.py", line 1718, in handle_user_exception
     reraise(exc_type, exc_value, tb)
   File "/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.6/site-packages/flask/_compat.py", line 35, in reraise
     raise value
-  File "/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.6/site-packages/flask/helpers.py", line 345, in url_for
-    force_external=external)
-  File "/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.6/site-packages/werkzeug/routing.py", line 1776, in build
-    raise BuildError(endpoint, values, method, self)
-werkzeug.routing.BuildError: Could not build url for endpoint 'user' with values ['usernamr']. Did you forget to specify values ['username']?
-2018-07-12 17:38:44,450 INFO: Microblog startup [in /storage/emulated/0/Download/blog/app/__init__.py:33]
-2018-07-12 17:40:29,459 INFO: Microblog startup [in /storage/emulated/0/Download/blog/app/__init__.py:33]
+  File "/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.6/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.6/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
+    return func(*args, **kwargs)
+  File "/storage/emulated/0/Download/blog/app/routers.py", line 64, in follow
+    current_user.follow(user)
+  File "/storage/emulated/0/Download/blog/app/models.py", line 47, in follow
+    if not self.is_following(user):
+  File "/storage/emulated/0/Download/blog/app/models.py", line 55, in is_following
+    if not self.user:
+AttributeError: 'User' object has no attribute 'user'
+2018-07-12 17:25:12,227 INFO: Microblog startup [in /storage/emulated/0/Download/blog/app/__init__.py:33]

@@ -1,0 +1,118 @@
+2018-07-12 16:49:42,265 ERROR: Exception on /follow/nelly [GET] [in /data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.6/site-packages/flask/app.py:1761]
+Traceback (most recent call last):
+  File "/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.6/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.6/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.6/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.6/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.6/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.6/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
+    return func(*args, **kwargs)
+  File "/storage/emulated/0/Download/blog/app/routers.py", line 64, in follow
+    current_user.follow(user)
+  File "/storage/emulated/0/Download/blog/app/models.py", line 47, in follow
+    if not self.is_following(user):
+  File "/storage/emulated/0/Download/blog/app/models.py", line 63, in is_following
+    followers.c.followed_id==user.id).count() > 0
+AttributeError: 'BaseQuery' object has no attribute 'id'
+2018-07-12 16:52:02,127 INFO: Microblog startup [in /storage/emulated/0/Download/blog/app/__init__.py:33]
+2018-07-12 16:52:05,272 ERROR: Exception on /follow/nelly [GET] [in /data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.6/site-packages/flask/app.py:1761]
+Traceback (most recent call last):
+  File "/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.6/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.6/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.6/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.6/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.6/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.6/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
+    return func(*args, **kwargs)
+  File "/storage/emulated/0/Download/blog/app/routers.py", line 64, in follow
+    current_user.follow(user)
+  File "/storage/emulated/0/Download/blog/app/models.py", line 47, in follow
+    if not self.is_following(user):
+  File "/storage/emulated/0/Download/blog/app/models.py", line 63, in is_following
+    followers.c.followed_id==user.id).count() > 0
+AttributeError: 'BaseQuery' object has no attribute 'id'
+2018-07-12 16:53:23,365 ERROR: Exception on /follow/nelly [GET] [in /data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.6/site-packages/flask/app.py:1761]
+Traceback (most recent call last):
+  File "/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.6/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.6/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.6/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.6/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.6/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.6/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
+    return func(*args, **kwargs)
+  File "/storage/emulated/0/Download/blog/app/routers.py", line 64, in follow
+    current_user.follow(user)
+  File "/storage/emulated/0/Download/blog/app/models.py", line 47, in follow
+    if not self.is_following(user):
+  File "/storage/emulated/0/Download/blog/app/models.py", line 63, in is_following
+    followers.c.followed_id==user.id).count() > 0
+AttributeError: 'BaseQuery' object has no attribute 'id'
+2018-07-12 16:53:50,002 ERROR: Exception on /follow/nelly [GET] [in /data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.6/site-packages/flask/app.py:1761]
+Traceback (most recent call last):
+  File "/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.6/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.6/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.6/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.6/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.6/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.6/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
+    return func(*args, **kwargs)
+  File "/storage/emulated/0/Download/blog/app/routers.py", line 64, in follow
+    current_user.follow(user)
+  File "/storage/emulated/0/Download/blog/app/models.py", line 47, in follow
+    if not self.is_following(user):
+  File "/storage/emulated/0/Download/blog/app/models.py", line 63, in is_following
+    followers.c.followed_id==user.id).count() > 0
+AttributeError: 'BaseQuery' object has no attribute 'id'
+2018-07-12 16:56:35,030 INFO: Microblog startup [in /storage/emulated/0/Download/blog/app/__init__.py:33]
+2018-07-12 16:56:39,721 ERROR: Exception on /follow/nelly [GET] [in /data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.6/site-packages/flask/app.py:1761]
+Traceback (most recent call last):
+  File "/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.6/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.6/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.6/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.6/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.6/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.6/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
+    return func(*args, **kwargs)
+  File "/storage/emulated/0/Download/blog/app/routers.py", line 64, in follow
+    current_user.follow(user)
+  File "/storage/emulated/0/Download/blog/app/models.py", line 47, in follow
+    if not self.is_following(user):
+  File "/storage/emulated/0/Download/blog/app/models.py", line 56, in is_following
+    followers.c.followed_id==user.id).count() > 0
+AttributeError: 'BaseQuery' object has no attribute 'id'
+2018-07-12 17:18:42,712 INFO: Microblog startup [in /storage/emulated/0/Download/blog/app/__init__.py:33]
