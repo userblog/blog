@@ -1,4 +1,4 @@
-2018-07-12 16:35:24,978 ERROR: Exception on /user/Nelly [GET] [in /data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.6/site-packages/flask/app.py:1761]
+2018-07-17 15:22:27,044 ERROR: Exception on /index [GET] [in /data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.6/site-packages/flask/app.py:1761]
 Traceback (most recent call last):
   File "/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.6/site-packages/flask/app.py", line 2292, in wsgi_app
     response = self.full_dispatch_request()
@@ -14,31 +14,13 @@ Traceback (most recent call last):
     return self.view_functions[rule.endpoint](**req.view_args)
   File "/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
     return func(*args, **kwargs)
-  File "/storage/emulated/0/Download/blog/app/routers.py", line 37, in user
-    return render_template('user.html', user=user, posts=posts)
-  File "/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.6/site-packages/flask/templating.py", line 135, in render_template
-    context, ctx.app)
-  File "/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.6/site-packages/flask/templating.py", line 117, in _render
-    rv = template.render(context)
-  File "/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.6/site-packages/jinja2/asyncsupport.py", line 76, in render
-    return original_render(self, *args, **kwargs)
-  File "/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.6/site-packages/jinja2/environment.py", line 1008, in render
-    return self.environment.handle_exception(exc_info, True)
-  File "/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.6/site-packages/jinja2/environment.py", line 780, in handle_exception
-    reraise(exc_type, exc_value, tb)
-  File "/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.6/site-packages/jinja2/_compat.py", line 37, in reraise
-    raise value.with_traceback(tb)
-  File "/storage/emulated/0/Download/blog/app/templates/user.html", line 1, in top-level template code
-    {% extends "base.html" %}
-  File "/storage/emulated/0/Download/blog/app/templates/base.html", line 31, in top-level template code
-    {% block content%}
-  File "/storage/emulated/0/Download/blog/app/templates/user.html", line 18, in block "content"
-    {% elif not current_user.is_following(user) %}
-  File "/storage/emulated/0/Download/blog/app/models.py", line 62, in is_following
-    return self.followed.filter(
-AttributeError: 'InstrumentedList' object has no attribute 'filter'
-2018-07-12 16:35:55,627 INFO: Microblog startup [in /storage/emulated/0/Download/blog/app/__init__.py:33]
-2018-07-12 16:36:11,746 ERROR: Exception on /user/Nelly [GET] [in /data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.6/site-packages/flask/app.py:1761]
+  File "/storage/emulated/0/Download/blog/app/routers.py", line 22, in index
+    posts = current_user.followed_post().all()
+  File "/storage/emulated/0/Download/blog/app/models.py", line 62, in followed_post
+    own = Post.query.filter_by(user_id == self.id)
+NameError: name 'user_id' is not defined
+2018-07-17 15:23:26,139 INFO: Microblog startup [in /storage/emulated/0/Download/blog/app/__init__.py:33]
+2018-07-17 15:23:28,782 ERROR: Exception on /index [GET] [in /data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.6/site-packages/flask/app.py:1761]
 Traceback (most recent call last):
   File "/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.6/site-packages/flask/app.py", line 2292, in wsgi_app
     response = self.full_dispatch_request()
@@ -54,27 +36,42 @@ Traceback (most recent call last):
     return self.view_functions[rule.endpoint](**req.view_args)
   File "/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
     return func(*args, **kwargs)
-  File "/storage/emulated/0/Download/blog/app/routers.py", line 37, in user
-    return render_template('user.html', user=user, posts=posts)
-  File "/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.6/site-packages/flask/templating.py", line 135, in render_template
-    context, ctx.app)
-  File "/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.6/site-packages/flask/templating.py", line 117, in _render
-    rv = template.render(context)
-  File "/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.6/site-packages/jinja2/asyncsupport.py", line 76, in render
-    return original_render(self, *args, **kwargs)
-  File "/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.6/site-packages/jinja2/environment.py", line 1008, in render
-    return self.environment.handle_exception(exc_info, True)
-  File "/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.6/site-packages/jinja2/environment.py", line 780, in handle_exception
+  File "/storage/emulated/0/Download/blog/app/routers.py", line 22, in index
+    posts = current_user.followed_post().all()
+  File "/storage/emulated/0/Download/blog/app/models.py", line 62, in followed_post
+    own = Post.query.filter_by(id == self.id)
+TypeError: filter_by() takes 1 positional argument but 2 were given
+2018-07-17 15:47:19,943 INFO: Microblog startup [in /storage/emulated/0/Download/blog/app/__init__.py:33]
+2018-07-17 15:47:38,927 INFO: Microblog startup [in /storage/emulated/0/Download/blog/app/__init__.py:33]
+2018-07-17 15:49:05,245 INFO: Microblog startup [in /storage/emulated/0/Download/blog/app/__init__.py:33]
+2018-07-17 15:55:45,760 INFO: Microblog startup [in /storage/emulated/0/Download/blog/app/__init__.py:33]
+2018-07-17 15:56:12,233 INFO: Microblog startup [in /storage/emulated/0/Download/blog/app/__init__.py:33]
+2018-07-17 15:58:41,210 INFO: Microblog startup [in /storage/emulated/0/Download/blog/app/__init__.py:33]
+2018-07-17 15:58:57,416 INFO: Microblog startup [in /storage/emulated/0/Download/blog/app/__init__.py:33]
+2018-07-17 15:59:10,993 ERROR: Exception on /index [GET] [in /data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.6/site-packages/flask/app.py:1761]
+Traceback (most recent call last):
+  File "/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.6/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.6/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.6/site-packages/flask/app.py", line 1718, in handle_user_exception
     reraise(exc_type, exc_value, tb)
-  File "/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.6/site-packages/jinja2/_compat.py", line 37, in reraise
-    raise value.with_traceback(tb)
-  File "/storage/emulated/0/Download/blog/app/templates/user.html", line 1, in top-level template code
-    {% extends "base.html" %}
-  File "/storage/emulated/0/Download/blog/app/templates/base.html", line 31, in top-level template code
-    {% block content%}
-  File "/storage/emulated/0/Download/blog/app/templates/user.html", line 18, in block "content"
-    {% elif not current_user.is_following(user) %}
-  File "/storage/emulated/0/Download/blog/app/models.py", line 62, in is_following
-    return self.followed.filter(
-AttributeError: 'InstrumentedList' object has no attribute 'filter'
-2018-07-12 16:39:46,480 INFO: Microblog startup [in /storage/emulated/0/Download/blog/app/__init__.py:33]
+  File "/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.6/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.6/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.6/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
+    return func(*args, **kwargs)
+  File "/storage/emulated/0/Download/blog/app/routers.py", line 22, in index
+    posts = current_user.followed_post().all()
+  File "/storage/emulated/0/Download/blog/app/models.py", line 62, in followed_post
+    own = Post.query.filter_by(user_id == self.id)
+NameError: name 'user_id' is not defined
+2018-07-17 16:01:17,656 INFO: Microblog startup [in /storage/emulated/0/Download/blog/app/__init__.py:33]
+2018-07-17 16:04:52,848 INFO: Microblog startup [in /storage/emulated/0/Download/blog/app/__init__.py:33]
+2018-07-17 16:05:45,717 INFO: Microblog startup [in /storage/emulated/0/Download/blog/app/__init__.py:33]
+2018-07-17 16:06:42,141 INFO: Microblog startup [in /storage/emulated/0/Download/blog/app/__init__.py:33]
+2018-07-17 16:07:34,120 INFO: Microblog startup [in /storage/emulated/0/Download/blog/app/__init__.py:33]
+2018-07-17 16:07:46,848 INFO: Microblog startup [in /storage/emulated/0/Download/blog/app/__init__.py:33]
