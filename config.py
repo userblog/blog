@@ -7,11 +7,11 @@ class Config(object):
     SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL') or 'sqlite:///' + os.path.join(basedir, 'app.db')
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     
-    MAIL_SERVER = 'smtp.googlemail.com'
+    MAIL_SERVER = 'smtp.yandex.ru'
     MAIL_PORT = 587
     MAIL_USE_TLS = 1
-    MAIL_USERNAME = 'rusin100195'
+    MAIL_USERNAME = 'imslavik@yandex.ru'
     MAIL_PASSWORD = 'rusins1l0a0v1i1k995'
-    ADMINS = ['rusin100195@gmail.com']
+    ADMINS = ['imslavik@yandex.ru']
     
     POSTS_PER_PAGE = 3
