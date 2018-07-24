@@ -1,3 +1,4 @@
+
 from flask import Flask
 from config import Config
 from flask_sqlalchemy import SQLAlchemy
@@ -7,6 +8,8 @@ from flask_mail import Mail
 import logging
 from logging.handlers import RotatingFileHandler
 import os
+from flask_bootstrap import Bootstrap
+from flask_moment import Moment
 
 
 app = Flask(__name__)
@@ -15,9 +18,13 @@ mail = Mail(app)
 db = SQLAlchemy(app)
 migrate = Migrate(db, app)
 login = LoginManager(app)
+login.login_message = ('Пожалуйста воидите, что бы попасть на эту страницу')
+login.login_view = 'login'
+bootstrap = Bootstrap(app)
+moment = Moment(app)
 login.login_view = 'login'
 
-from app import routers, models, error, mail
+from app import routers, models, error, email
 
 if not app.debug:
     # ...

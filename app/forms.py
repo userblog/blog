@@ -4,32 +4,32 @@ from wtforms.validators import DataRequired, ValidationError, Email, EqualTo, Le
 from app.models import User
 
 class LoginForm(FlaskForm):
-	username = StringField('Username', validators=[DataRequired()])
-	password = PasswordField('Password', validators=[DataRequired()])
-	remember_me = BooleanField("Remember Me")
-	submit = SubmitField('Sign In')
+	username = StringField('Логин', validators=[DataRequired()])
+	password = PasswordField('Пароль', validators=[DataRequired()])
+	remember_me = BooleanField("Запомнить меня")
+	submit = SubmitField('Войти')
 
 class RegistrationForm(FlaskForm):
-	username = StringField('Username', validators=[DataRequired()])
-	email = StringField('Email', validators=[DataRequired(), Email()])
-	password = PasswordField('Password', validators=[DataRequired()])
-	password2 = PasswordField('Repeat password', validators=[DataRequired(), EqualTo('password')])
-	submit = SubmitField('Registration')
+	username = StringField('Логин', validators=[DataRequired()])
+	email = StringField('Электронная почта', validators=[DataRequired(), Email()])
+	password = PasswordField('Пароль', validators=[DataRequired()])
+	password2 = PasswordField('Повторите пароль', validators=[DataRequired(), EqualTo('password')])
+	submit = SubmitField('Зарегистрироваться')
 	
 	def validate_username(self, username):
 		user = User.query.filter_by(username=username.data).first()
 		if user is not None:
-			raise ValidationError('please use a different username')
+			raise ValidationError('Этот логин уже занят')
 			
 	def validate_email(self, email):
 		email = User.query.filter_by(email=email.data).first()
 		if email is not None:
-			raise ValidationError('please use a different username')
+			raise ValidationError('Этот email уже занят')
 
 class EditProfileForm(FlaskForm):
-	username = StringField('Username', validators=[DataRequired()])
-	about_me = TextAreaField('Abot me', validators=[Length(min=0, max=140)])
-	submit = SubmitField('Submit')
+	username = StringField('Логин', validators=[DataRequired()])
+	about_me = TextAreaField('Обо мне', validators=[Length(min=0, max=140)])
+	submit = SubmitField('Сохранить')
     
     #Proverka imeni pro redaktorovanii profilya,
     #esli imya uge sushestvuet, to vydaetsa predupregdenie"""
@@ -42,9 +42,18 @@ class EditProfileForm(FlaskForm):
 		if username.data != self.original_username:
 			user = User.query.filter_by(username=self.username.data).first()
 			if user is not None:
-				raise ValidationError('Please use a different username.')
+				raise ValidationError('Этот логин уже занят')
 				
 class PostForm(FlaskForm):
-	post = TextAreaField('Say sonething', validators=[DataRequired(), Length(min=1, max=140)])
-	submit = SubmitField('Submit')
-    
+	post = TextAreaField('Ваша запись', validators=[DataRequired(), Length(min=1, max=140)])
+	submit = SubmitField('Отправить')
+	
+class ResetPasswordRequestForm(FlaskForm):
+    email = StringField('Электронная почта', validators=[DataRequired(), Email()])
+    submit = SubmitField('Сбросить пароль')
+
+class ResetPasswordForm(FlaskForm):
+    password = PasswordField('Пароль', validators=[DataRequired()])
+    password2 = PasswordField(
+        'Повторите пароль', validators=[DataRequired(), EqualTo('password')])
+    submit = SubmitField('Сохранить')

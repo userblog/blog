@@ -1,6 +1,7 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
 
-{% block content %}
-  <h1>Server error. Administrstor has bee notifid. Thank You.</h1>
-  <p><a href="{{ url_for('index') }}">back</a></p>
+{% block app_content %}
+    <h1>Произошла непредвиденная ошибка</h1>
+    <p>Администратор был уведомлен. Извините за неудобства!</p>
+    <p><a href="{{ url_for('index') }}">На главную</a></p>
 {% endblock %}
